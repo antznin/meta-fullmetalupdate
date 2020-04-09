@@ -16,6 +16,7 @@ RDEPENDS_${PN} += " \
     python3-pydbus \
     python3-pygobject \
     u-boot-fw-utils \
+    socat \
 "
 
 SRC_URI += " \
