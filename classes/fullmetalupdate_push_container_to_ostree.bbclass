@@ -15,9 +15,10 @@ do_push_container_to_ostree_and_hawkbit() {
     fi
 
     if [ ! -z "${NOTIFY}" ]; then
-        test -z ${TIMEOUT} && err_msg=" TIMEOUT"
-        test ${AUTOSTART} = "0" && err_msg="$err_msg AUTOSTART"
-        test -z ${err_msg} || bbfatal "NOTIFY is set, so these variables should be set :$err_msg"
+        test -z ${TIMEOUT} && err_msg="\n\tTIMEOUT should be set to a positive delay"
+        test -z ${AUTOSTART} && AUTOSTART="1"
+        test ${AUTOSTART} = "0" && err_msg="$err_msg\n\tAUTOSTART cannot be set to 0 if NOTIFY is set"
+        test -z ${err_msg} || bbfatal "NOTIFY is set, but these variables are misconfigured:$err_msg"
     fi
 
     ostree_init_if_non_existent ${OSTREE_REPO_CONTAINERS} archive-z2
