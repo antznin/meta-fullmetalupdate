@@ -1,1 +1,4 @@
-PACKAGECONFIG = "libpng eglfs gl gles2 accessibility freetype fontconfig jpeg evdev kms gbm"
+# Copyright (C) 2019 Witekio
+# Released under the MIT license (see COPYING.MIT for the terms)
+
+include ${PN}_${MACHINE}.inc
